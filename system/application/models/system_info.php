@@ -31,8 +31,17 @@ class System_info extends Model {
 		 return $info;
 	}
 	function iso(){
-        	 $os['available_iso'] = scandir($this->config->item('wemu_iso'));
-		 return $os;
+                 $holla = scandir('/home/www/oss/data/Distro/');
+                 foreach ($holla as $hoy){
+                   if ($hoy != "." && $hoy != ".."){
+                     $nguk = scandir("/home/www/oss/data/Distro/$hoy");
+                        foreach ($nguk as $bleh){
+                         if ($bleh != "." && $bleh != ".."){
+                            echo "$bleh</br>\n";
+                           }
+                         }
+                     }
+                 };
 	}
     }
 ?>

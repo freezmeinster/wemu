@@ -48,9 +48,8 @@ class Wemu extends Controller {
                   $stat = $this->permision->check_user();
                 if ($stat == "1") {
                 $info = $this->system_info->info();
-                $iso = $this->system_info->iso();
                 $this->load->view("header");
-                $this->load->view("iso.php", $iso);
+                $this->load->view("iso.php");
 		$this->load->view("sidebar", $info);
 		$this->load->view("widebar");
 		$this->load->view("footer");
