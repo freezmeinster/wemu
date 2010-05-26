@@ -30,14 +30,16 @@ class System_info extends Model {
 		 $info['size'] = shell_exec("cat $hdd_conf$hdd | grep SIZE | cut -d= -f2");
 		 return $info;
 	}
-	function iso(){
+	function available_iso(){
                  $holla = scandir('/home/www/oss/data/Distro/');
                  foreach ($holla as $hoy){
                    if ($hoy != "." && $hoy != ".."){
                      $nguk = scandir("/home/www/oss/data/Distro/$hoy");
                         foreach ($nguk as $bleh){
                          if ($bleh != "." && $bleh != ".."){
-                            echo "<tr><td class=\"nguk\">$bleh</td><td class=\"nguk\"><a href=>Register</a></td></tr>\n";
+                            echo "<tr><td class=\"nguk\">$bleh</td><td class=\"nguk\"><a href=\"";
+			    echo 
+			    echo"\">Register</a></td></tr>\n";
                            }
                          }
                      }
