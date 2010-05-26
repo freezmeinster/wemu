@@ -14,16 +14,16 @@
 			<div id="menu">
 				<ul>
 					<li><a href="<?php echo base_url();?>">Home</a></li>
-					<li><a href="<?php echo base_url();?>index.php/wemu/create">Create</a></li>
-					<li><a href="<?php echo base_url();?>index.php/wemu/edit">Modify</a></li>
-                                        <li><a href="<?php echo base_url();?>index.php/wemu/edit">Delete</a></li>	
+					<li><a href="<?php echo base_url();?>index.php/wemu/hardisk">Harddisk</a></li>
+					<li><a href="<?php echo base_url();?>index.php/wemu/iso">ISO</a></li>
+                    <li><a href="<?php echo base_url();?>index.php/wemu/vm">VM</a></li>	
 					<li><a href="<?php echo base_url();?>index.php/wemu/about">About</a></li>
                                         <?php
                                             $stat = $this->permision->check_user();
                                             if ($stat == "1") {
 					      echo "<li><a href=\"";
                                               echo base_url(); 
-                                              echo "index.php/lib_wemu/logouts\">Logout</a></li>";
+                                              echo "index.php/lib_wemu/logout\">Logout</a></li>";
 					     }
 					    else if ($stat == "0") {
 					    echo "";

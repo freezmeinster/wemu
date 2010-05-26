@@ -23,7 +23,9 @@
                                             if ($stat == "1") {
 					      echo "<li><a href=\"";
                                               echo base_url(); 
-                                              echo "index.php/lib_wemu/logout\">Logout</a></li>";
+                                              echo "index.php/lib_wemu/logout";
+					      echo "";
+					      echo "\">Logout</a></li>";
 					     }
 					    else if ($stat == "0") {
 					    echo "";

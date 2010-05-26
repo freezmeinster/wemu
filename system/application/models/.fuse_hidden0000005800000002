@@ -38,9 +38,8 @@ class System_info extends Model {
                         foreach ($nguk as $bleh){
                          if ($bleh != "." && $bleh != ".."){
                             echo "<tr><td class=\"nguk\">$bleh</td><td class=\"nguk\"><a href=\"";
-			    echo site_url();
-			    echo "lib_wemu/iso_register/";
-			    echo "$bleh\">Register</a></td></tr>\n";
+			    echo "";
+			    echo"\">Register</a></td></tr>\n";
                            }
                          }
                      }
