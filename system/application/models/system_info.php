@@ -37,7 +37,7 @@ class System_info extends Model {
                      $nguk = scandir("/home/www/oss/data/Distro/$hoy");
                         foreach ($nguk as $bleh){
                          if ($bleh != "." && $bleh != ".."){
-                            echo "$bleh</br>\n";
+                            echo "<tr><td class=\"nguk\">$bleh</td><td class=\"nguk\"><a href=>Register</a></td></tr>\n";
                            }
                          }
                      }
