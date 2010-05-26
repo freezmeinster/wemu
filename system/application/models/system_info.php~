@@ -1,0 +1,28 @@
+<?php
+class System_info extends Model {
+
+    function System_info()
+    {
+        parent::Model();
+    }
+    function info()
+    {
+         $os['total'] = shell_exec("free -m | grep Mem | awk '{print $2}'");
+         $os['used'] = shell_exec("free -m | grep Mem | awk '{print $3}'");
+         $os['free'] = shell_exec("free -m | grep Mem | awk '{print $4}'");
+         $os['ostype'] = shell_exec("uname");
+         $os['kernel'] = shell_exec("uname -r");
+         $os['host'] = shell_exec("hostname");
+         $os['qemu_version'] = shell_exec("qemu | grep \"QEMU PC\" | awk '{print $5}'");
+         $os['ip'] = shell_exec("route -n | grep 0  | awk '{print $1}' | grep -v 0.0.0.0 | grep -v 127 | cut -d. -f1-3");
+         $os['available_hdd'] = scandir($this->config->item('wemu_hdd'));
+	 $os['available_iso'] = scandir('/opt/wemu/iso/');
+	 $df=$this->config->item('wemu_part');
+	 $os['disk'] = shell_exec("df -h | grep /dev/root | awk '{print $4}' | cut -d. -f1");
+         $os['part_disk'] = shell_exec("ls -al  /dev/root | awk '{ print $11}'");
+	 $os['wemu_base'] = $this->config->item('wemu_base');
+	 $os['wemu_part'] = $this->config->item('wemu_part');
+         return $os;
+    }
+    }
+?>

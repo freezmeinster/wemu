@@ -1,0 +1,87 @@
+<?php
+class Wemu extends Controller {
+	function index()
+	{
+                
+                $info = $this->system_info->info();
+		$this->load->view("header");
+                $this->load->view("home");
+		$this->load->view("sidebar", $info);
+		$this->load->view("widebar");
+		$this->load->view("footer");
+	}
+         function create_vm()
+         {
+	        $stat = $this->permision->check_user();
+                if ($stat == "1") {
+                $info = $this->system_info->info();
+                $this->load->view("header");
+                $this->load->view("create_vm.php", $info);
+		$this->load->view("sidebar", $info);
+		$this->load->view("widebar");
+		$this->load->view("footer");
+                }
+                else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+                } 
+          
+         }
+         function create_hd()
+         {    
+                $stat = $this->permision->check_user();
+                if ($stat == "1") {
+                      
+		$info = $this->system_info->info();
+                $this->load->view("header");
+                $this->load->view("create_hd.php", $info);
+		$this->load->view("sidebar", $info);
+		$this->load->view("widebar");
+		$this->load->view("footer");
+                }
+                else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+             }
+         }
+         function create()
+         {     
+                  $stat = $this->permision->check_user();
+                if ($stat == "1") {
+                $info = $this->system_info->info();
+                $this->load->view("header");
+                $this->load->view("create.php", $info);
+		$this->load->view("sidebar", $info);
+		$this->load->view("widebar");
+		$this->load->view("footer");
+                }
+                else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+                }
+		
+         }
+        function edit()
+         {
+                  $stat = $this->permision->check_user();
+                if ($stat == "1") {
+                $info = $this->system_info->info();
+                $this->load->view("header");
+                $this->load->view("edit.php");
+		$this->load->view("sidebar", $info);
+		$this->load->view("widebar");
+		$this->load->view("footer");
+                }
+                else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+                }
+		
+         }
+        function about()
+         {
+                $info = $this->system_info->info();
+                $this->load->view("header");
+                $this->load->view("about.php");
+		$this->load->view("sidebar", $info);
+		$this->load->view("widebar");
+		$this->load->view("footer");
+         }
+}
+?>

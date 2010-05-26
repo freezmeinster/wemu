@@ -1,0 +1,8 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$config['wemu_base'] = '/home/bram/wemu/';
+$config['wemu_hdd'] = '/home/bram/wemu/hdd/';
+$config['wemu_iso'] = '/home/bram/wemu/iso/';
+$config['wemu_conf_hdd'] = '/home/bram/wemu/conf/hdd/';
+$config['wemu_conf_vm'] = '/home/bram/wemu/conf/vm/';
+$config['wemu_conf'] = '/home/bram/wemu/conf/';
+$config['wemu_part'] = '/dev/sda6';

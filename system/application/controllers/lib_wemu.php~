@@ -1,0 +1,57 @@
+<?php
+class Lib_wemu extends Controller {
+
+	function index()
+	{
+                $stat = $this->permision->check_user();
+                if ($stat == "1") {
+                   redirect('wemu');
+                }
+                else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+                }
+	}
+        function check()
+	{
+		$this->load->view("header");
+                $this->load->view("lib/login");
+		$this->load->view("widebar");
+		$this->load->view("footer");
+	}
+        function login()
+        {
+                $usr=$this->input->post('user');
+                $pass=$this->input->post('pass');
+                $this->permision->set_user($usr,$pass);
+                redirect('wemu');
+                
+        }
+        function logout()
+        {
+                $this->permision->destroy_user();
+                 redirect('wemu');
+        }
+         
+        function create_hd()
+        {    
+                $stat = $this->permision->check_user();
+                if ($stat == "1") {
+                $name=$this->input->post('hd_name');  
+		$size=$this->input->post('size');
+		$this->build->disk($name,$size,$type);
+                redirect('wemu/create'); 
+                }
+                else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+                }
+        }
+        function upload_iso(){
+	  
+	}
+	function del_hd(){
+         $hdd= $this->uri->segment(3);
+	 $this->modify->delete_hdd($hdd);
+	  redirect('wemu/create');
+	}
+}
+?>

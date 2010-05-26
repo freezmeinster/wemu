@@ -1,0 +1,17 @@
+<?php
+class Modify extends Model {
+
+    function Modify()
+    {
+        parent::Model();
+    }
+    function delete_hdd($file){
+     $base=$this->config->item('wemu_hdd');
+     $conf=$this->config->item('wemu_conf');
+     shell_exec("rm $base$file");
+     shell_exec("rm $conf$file");
+    }
+    function edit_hdd($name,$size,$format){
+    }
+}
+?>

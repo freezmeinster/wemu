@@ -1,0 +1,85 @@
+
+                     <div id="page">
+			<div id="content">
+				<div class="post">
+					<h2 class="title">Wemu Creator</h2>
+					<div class="entry"> 
+					  <table cellspacing="10"><tr><td>   
+					  <p>
+						Available Hardisk :
+                                                 <?php foreach ($available_hdd as $nguk){ 
+                                                        if ( $nguk != "." && $nguk != ".."){
+                                                  echo "<li>$nguk";
+						  echo  "<a href=\"";
+						  echo  site_url();
+						  echo "/lib_wemu/del_hd/$nguk\"> delete</a>";
+						  echo "</li>";
+						       }
+                                                  }?>
+					      </p>
+					      <p>
+						  Create Hardisk:
+						<?php echo form_open('lib_wemu/create_hd');?>
+						  
+						  <table>
+						     <tr><td>Name</td><td>:</td><td><input type="text" name="hd_name"/></td></tr>
+						     <tr><td>Type</td><td>:</td><td><select name="type">
+										    <option value="qcow2">----------</option>	
+										    <option value="nbd">nbd</option>
+										    <option value="parallels">parallels</option>
+										    <option value="qcow2">qcow2</option>
+										    <option value="vvfat">vvfat</option>
+										    <option value="vpc">vpc</option>
+										    <option value="bochs">bochs</option>
+										    <option value="dmg">dmg</option>
+										    <option value="cloop">cloop</option>
+										    <option value="vmdk">vmdk</option>
+										    <option value="qcow">qcow</option>
+										    <option value="cow">cow</option>
+										    <option value="host_device">host_device</option>
+										    <option value="raw">raw</option>
+										    </select></td></tr>
+						      <tr><td>Size</td><td>:</td><td><select name="size">
+										    <option value="0">----------</option>	
+											    <?php 
+
+														
+												for( $i=1; $i <= $disk; $i+=4){
+												echo "<option value=$i";
+												echo "G>$i Gigabytes</option>";    
+											  }
+												    ?>		      
+										    </select></td></tr>
+						      
+						    <tr><td><input type="reset" value="Reset"/></td><td></td><td><input type="submit" value="Create"/></td></tr>
+						  </table>
+						 </form>
+                                              </p></td><td>
+						 <p>
+						Available Iso's :
+                                                 <?php foreach ($available_iso as $nguk){ 
+                                                        if ( $nguk != "." && $nguk != ".."){
+                                                  echo "<li><a href=\"\">$nguk</a></li>"; }
+                                                  }?>
+					      </p>
+					      <p>
+						  Create Hardisk:
+						
+						  <?php echo form_open_multipart('lib_wemu/upload_iso');?>
+						  <table>
+						     <tr><td colspan="3"><input type="file" name="userfile" size="20" /></td></tr>
+						     	      
+										    </select></td></tr>
+						    <tr><td><input type="reset" value="Reset"/></td><td></td><td><input type="submit" value="Upload"/></td></tr>
+						  </table>
+						 </form>
+                                              </p></td></tr></table>
+					</div>
+				</div>
+				
+			</div>
+			<!-- end #content -->
+			<!-- end #widebar -->
+		</div>
+		<!-- end #page -->
+	</div>
