@@ -39,6 +39,7 @@ class System_info extends Model {
 		 $info['disk'] = shell_exec("cat $vm_conf$vm | grep HARDDISK | cut -d= -f2");
 		 $info['iso'] = shell_exec("cat $vm_conf$vm | grep ISO | cut -d= -f2");
 		 $info['port'] = shell_exec("cat $vm_conf$vm | grep PORT | cut -d= -f2");
+		 $info['pid'] = shell_exec("");
 		 return $info;
 	}
 	function available_iso(){

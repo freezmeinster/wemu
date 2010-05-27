@@ -94,5 +94,14 @@ class Lib_wemu extends Controller {
 		$this->modify->edit_hdd($hdd,$size,$type,'fix');
 		redirect('wemu/hardisk');
 	    }
+            function start_vm(){
+               $vm=$this->uri->segment(3);
+               $data['holla']=$this->proccess->init_vm($vm);
+	       $this->load->view("header");
+               $this->load->view("lib/vm_success",$data);
+	       $this->load->view("widebar");
+	       $this->load->view("footer");
+               
+            }
 }
 ?>

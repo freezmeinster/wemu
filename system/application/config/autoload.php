@@ -108,7 +108,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('system_info','permision','build','modify');
+$autoload['model'] = array('system_info','permision','build','modify','proccess');
 
 
 
