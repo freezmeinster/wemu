@@ -17,6 +17,7 @@ class System_info extends Model {
          $os['ip'] = shell_exec("route -n | grep 0  | awk '{print $1}' | grep -v 0.0.0.0 | grep -v 127 | cut -d. -f1-3");
          $os['available_hdd'] = scandir($this->config->item('wemu_hdd'));
 	 $os['available_iso'] = scandir($this->config->item('wemu_iso'));
+	 $os['available_vm'] = scandir($this->config->item('wemu_conf_vm'));
 	 $df=$this->config->item('wemu_part');
 	 $os['disk'] = shell_exec("df -h | grep $df | awk '{print $4}' | cut -d. -f1");
          $os['part_disk'] = shell_exec("ls -al  /dev/root | awk '{ print $11}'");
@@ -29,6 +30,15 @@ class System_info extends Model {
 		 $info['name'] = shell_exec("cat $hdd_conf$hdd | grep NAME | cut -d= -f2");
 		 $info['type'] = shell_exec("cat $hdd_conf$hdd | grep TYPE | cut -d= -f2");
 		 $info['size'] = shell_exec("cat $hdd_conf$hdd | grep SIZE | cut -d= -f2");
+		 return $info;
+	}
+        function vm_info($vm){
+		 $vm_conf = $this->config->item('wemu_conf_vm');
+		 $info['name'] = shell_exec("cat $vm_conf$vm | grep NAME | cut -d= -f2");
+		 $info['memory'] = shell_exec("cat $vm_conf$vm | grep MEMORY | cut -d= -f2");
+		 $info['disk'] = shell_exec("cat $vm_conf$vm | grep HARDDISK | cut -d= -f2");
+		 $info['iso'] = shell_exec("cat $vm_conf$vm | grep ISO | cut -d= -f2");
+		 $info['port'] = shell_exec("cat $vm_conf$vm | grep PORT | cut -d= -f2");
 		 return $info;
 	}
 	function available_iso(){

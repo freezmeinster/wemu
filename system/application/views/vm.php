@@ -2,8 +2,42 @@
                      <div id="page">
 			<div id="content">
 				<div class="post">
-					<h2 class="title">Wemu Creator</h2>
+					<h2 class="title">Virtual Machine Creator</h2>
 					<div class="entry"> 
+<p>
+						Available Virtual Machine :    
+							<table >
+								<tr><th>Name</th><th>Memory</th><th>Harddisk</th><th>ISO</th><th>Vnc's Port</th><th>Editor</th><th>Run</th></tr>
+                                   <?php foreach ($available_vm as $nguk){ 
+                                      if ( $nguk != "." && $nguk != ".."){
+                                     $vm = $this->system_info->vm_info($nguk);
+                             echo "<tr><td class=\"nguk\">$nguk</td><td class=\"nguk\">";
+						     echo $vm['memory'];
+						     echo  "</td><td class=\"nguk\">";
+						     echo $vm['disk'];
+					             echo  "</td><td class=\"nguk\">";
+                                                     echo $vm['iso'];
+						     echo  "</td><td class=\"nguk\">590";
+						      echo $vm['port'];
+						     echo  "</td><td class=\"nguk\">";
+					             echo  "<a href=\"";
+						     echo  site_url();
+						     echo  "/lib_wemu/del_vm/$nguk\"> delete</a>\n  ";
+							  echo  "<a href=\"";
+						     echo  site_url();
+						     echo  "/lib_wemu/edit_vm/$nguk\"> edit</a></td><td class=\"nguk\">\n";
+						      echo  "<a href=\"";
+						     echo  site_url();
+						     echo  "/lib_wemu/start_vm/$nguk\"> start</a>\n";
+							  echo  "<a href=\"";
+						     echo  site_url();
+						     echo  "/lib_wemu/stop_vm/$nguk\"> stop</a>\n";
+						     echo  "</td></tr>\n";
+						       }
+						  }?>
+						</table>
+							
+					      </p>
 					     <p>
 						<?php echo form_open('lib_wemu/vm_register');?>
 						<table id="search" >
@@ -42,7 +76,7 @@
 						  <tr><td title="Wemu use VNC to let user to comunicate with the Virtual Machine they created, please specify the port.">Remote Port</td><td>:</td><td>
 						  <select name="port">
 						     <?php for ($i = 1; $i <=8; $i++) {
-							    echo "<option value=\":$i\">590$i</option> \n" ;
+							    echo "<option value=\"$i\">590$i</option> \n" ;
 							    }?>
 						  </select>
                                                    </td></tr>
