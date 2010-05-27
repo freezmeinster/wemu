@@ -51,16 +51,29 @@ class Lib_wemu extends Controller {
         }
 
 	  function iso_register(){
+                $stat = $this->permision->check_user();
+                if ($stat == "1") {
 		$path = $this->uri->segment(3);
 		$iso = $this->uri->segment(4); 
  		$this->build->reg_iso($path,$iso);
 		redirect('wemu/iso');
+		 }
+                else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+                }
 	    }
            function iso_unregister(){
+		 $stat = $this->permision->check_user();
+                if ($stat == "1") {
 		$iso = $this->uri->segment(3);
 		$conf = $this->config->item('wemu_iso'); 
  		shell_exec("rm $conf/$iso");
 		redirect('wemu/iso');
+                }
+		else if ($stat == "0") {
+                   redirect('lib_wemu/check');
+                }
+		
 	    }
 
 	    function del_hd(){
@@ -103,5 +116,11 @@ class Lib_wemu extends Controller {
 	       $this->load->view("footer");
                
             }
+            function del_vm(){
+               $vm=$this->uri->segment(3);
+	       $vm_path=$this->config->item('wemu_conf_vm');
+	       shell_exec("rm $vm_path$vm");
+	       redirect('wemu/vm');
+	    }
 }
 ?>
