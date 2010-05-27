@@ -11,7 +11,7 @@
 								<tr><th>Name</th><th>Type</th><th>Size</th><th>Action</th></tr>
                                    <?php foreach ($available_hdd as $nguk){ 
                                       if ( $nguk != "." && $nguk != ".."){
-									   $hdd = $this->system_info->hdd_info($nguk);
+                                     $hdd = $this->system_info->hdd_info($nguk);
                              echo "<tr><td class=\"nguk\">$nguk</td><td class=\"nguk\">";
 							 echo $hdd['type'];
 						     echo  "</td><td class=\"nguk\">";

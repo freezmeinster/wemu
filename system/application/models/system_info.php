@@ -16,6 +16,7 @@ class System_info extends Model {
          $os['qemu_version'] = shell_exec("qemu | grep \"QEMU PC\" | awk '{print $5}'");
          $os['ip'] = shell_exec("route -n | grep 0  | awk '{print $1}' | grep -v 0.0.0.0 | grep -v 127 | cut -d. -f1-3");
          $os['available_hdd'] = scandir($this->config->item('wemu_hdd'));
+	 $os['available_iso'] = scandir($this->config->item('wemu_iso'));
 	 $df=$this->config->item('wemu_part');
 	 $os['disk'] = shell_exec("df -h | grep $df | awk '{print $4}' | cut -d. -f1");
          $os['part_disk'] = shell_exec("ls -al  /dev/root | awk '{ print $11}'");
