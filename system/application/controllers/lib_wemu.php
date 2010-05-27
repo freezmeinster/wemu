@@ -64,9 +64,18 @@ class Lib_wemu extends Controller {
 	    }
 
 	    function del_hd(){
-         $hdd = $this->uri->segment(3);
+             $hdd = $this->uri->segment(3);
 	     $this->modify->delete_hdd($hdd);
 	     redirect('wemu/hardisk');
+	    }
+	    function vm_register(){
+            $name=$this->input->post('name');
+	    $mem=$this->input->post('mem');
+	    $iso=$this->input->post('iso');
+            $hdd=$this->input->post('hdd');
+            $port=$this->input->post('port');
+	    $this->build->reg_vm($name,$mem,$hdd,$iso,$port);
+	    redirect('wemu/vm');
 	    }
 
 	    function edit_hd(){
