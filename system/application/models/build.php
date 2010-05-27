@@ -18,9 +18,11 @@ class Build extends Model {
 	   return $hola;
     }
     
-   function isodir( $path = '.', $level = 0 ){
-
-   
-   }
+   function reg_iso($path,$iso){
+       $iso_path=$this->config->item('wemu_iso');
+       shell_exec("touch $iso_path$iso");
+       shell_exec("echo LOCATION=\"/home/www/oss/data/Distro/$path/$iso\" >> $iso_path_iso");
+       return $nguk;
+      }
 }
 ?>

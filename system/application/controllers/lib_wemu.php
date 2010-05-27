@@ -13,8 +13,9 @@ class Lib_wemu extends Controller {
 	}
         function check()
 	{
+		$data['from'] = $this->uri->segment(3);
 		$this->load->view("header");
-                $this->load->view("lib/login");
+                $this->load->view("lib/login",$data);
 		$this->load->view("widebar");
 		$this->load->view("footer");
 	}
@@ -22,8 +23,10 @@ class Lib_wemu extends Controller {
         {
                 $usr=$this->input->post('user');
                 $pass=$this->input->post('pass');
+                $from=$this->input->post('from');
+		$des = "wemu/$from";
                 $this->permision->set_user($usr,$pass);
-                redirect('wemu');
+                redirect($des);
                 
         }
         function logout()
@@ -46,9 +49,20 @@ class Lib_wemu extends Controller {
                    redirect('lib_wemu/check');
                 }
         }
-        function upload_iso(){
-	  
+
+	  function iso_register(){
+		$path = $this->uri->segment(3);
+		$iso = $this->uri->segment(4); 
+ 		$this->build->reg_iso($path,$iso);
+		redirect('wemu/iso');
 	    }
+           function iso_unregister(){
+		$iso = $this->uri->segment(3);
+		$conf = $this->config->item('wemu_iso'); 
+ 		shell_exec("rm $conf/$iso");
+		redirect('wemu/iso');
+	    }
+
 	    function del_hd(){
          $hdd = $this->uri->segment(3);
 	     $this->modify->delete_hdd($hdd);

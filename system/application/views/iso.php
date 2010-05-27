@@ -3,7 +3,17 @@
 			<div id="content">
 				<div class="post">
 					<h2 class="title">Wemu iso management</h2>
-					<div class="entry"><p>
+					<div class="entry">
+					  <p>
+					       Registered ISO's : 
+						<table >
+						<tr><th>Name</th><th>Action</th></tr>
+                                               <?php  
+						  echo $this->system_info->registered_iso();			
+						?>
+						</table>
+					      </p>
+						<p>
 						Available ISO  : 
                                                 <table >
 						<tr><th>Name</th><th>Action</th></tr>
@@ -13,9 +23,7 @@
                                                 ?>
 						</table>	
 					      </p>
-			</div>
-			<!-- end #content -->
-			<!-- end #widebar -->
-		</div>
-		<!-- end #page -->
+					      
+					</div>
+	                 </div>
 	</div>

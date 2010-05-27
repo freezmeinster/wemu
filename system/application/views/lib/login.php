@@ -6,6 +6,7 @@
 					<div class="entry"> 
                                         <?php echo form_open('lib_wemu/login');?>
                                            <table id="search" align="center">
+				            <input type="hidden" name="from" value="<?php echo $from;?>">
 					    <tr><td>User</td><td>:</td><td><input type="text" name="user"/></td></tr>
 					    <tr><td>Password</td><td>:</td><td><input type="password" name="pass"/></td></tr>
 					    <tr><td colspan="3"><input type="reset" value="Reset"><input type="submit" value="Login"></td></tr>

@@ -22,7 +22,7 @@ class Wemu extends Controller {
 		$this->load->view("footer");
                 }
                 else if ($stat == "0") {
-                   redirect('lib_wemu/check');
+                   redirect('lib_wemu/check/vm');
                 } 
           
          }
@@ -39,7 +39,7 @@ class Wemu extends Controller {
 		$this->load->view("footer");
                 }
                 else if ($stat == "0") {
-                   redirect('lib_wemu/check');
+                   redirect('lib_wemu/check/hardisk');
                 }
 		
          }
@@ -55,7 +55,7 @@ class Wemu extends Controller {
 		$this->load->view("footer");
                 }
                 else if ($stat == "0") {
-                   redirect('lib_wemu/check');
+                   redirect('lib_wemu/check/iso');
                 }
 		
          }

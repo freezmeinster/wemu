@@ -39,12 +39,23 @@ class System_info extends Model {
                          if ($bleh != "." && $bleh != ".."){
                             echo "<tr><td class=\"nguk\">$bleh</td><td class=\"nguk\"><a href=\"";
 			    echo site_url();
-			    echo "lib_wemu/iso_register/";
+			    echo "/lib_wemu/iso_register/$hoy/";
 			    echo "$bleh\">Register</a></td></tr>\n";
                            }
                          }
                      }
                  };
 	}
+        function registered_iso(){
+                 $holla = scandir('/home/bram/wemu/iso/');
+                 foreach ($holla as $hoy){
+                   if ($hoy != "." && $hoy != ".."){
+                            echo "<tr><td class=\"nguk\">$hoy</td><td class=\"nguk\"><a href=\"";
+			    echo site_url();
+			    echo "/lib_wemu/iso_unregister/";
+			    echo "$hoy\">Unregister</a></td></tr>\n";
+                           }
+                         }
+  	}
     }
 ?>
